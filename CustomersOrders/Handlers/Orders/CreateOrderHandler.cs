@@ -5,6 +5,7 @@ using CustomersOrders.Handlers.Orders.Commands;
 using CustomersOrders.Repositories;
 using FluentValidation;
 using MediatR;
+using System.Net;
 using System.Net.Mail;
 
 namespace CustomersOrders.Handlers.Orders
@@ -38,14 +39,26 @@ namespace CustomersOrders.Handlers.Orders
             var validator = new OrderValidator();
             validator.ValidateAndThrow(order);
             _unitOfWork.SaveChanges();
-            
-            //using(var client = new SmtpClient())
-            //{
-            //    _mailMessage.Sender = new MailAddress("Allphi@allphi.eu");
-            //    _mailMessage.To.Add(customer.Email);
-            //    client.Send(_mailMessage);
-            //}
-           
+
+            using (var client = new SmtpClient("smtp.gmail.com"))
+            {
+                client.Port = 587; // Specify the SMTP port
+                client.Credentials = new NetworkCredential("gmailUsername", "gmailPassword");
+                client.EnableSsl = true; // Enable SSL if required
+
+                _mailMessage.From = new MailAddress("Allphi@allphi.eu");
+                _mailMessage.To.Add(customer.Email);
+
+                _mailMessage.Subject = "new order";
+                _mailMessage.Body = "thanks for spending money";
+                _mailMessage.IsBodyHtml = true; 
+                _mailMessage.Priority = MailPriority.Normal; 
+
+                _mailMessage.CC.Add("accounting@allphi.com");
+
+                //client.Send(_mailMessage);
+            }
+
             return Task.FromResult(order.Id);
         }
     }

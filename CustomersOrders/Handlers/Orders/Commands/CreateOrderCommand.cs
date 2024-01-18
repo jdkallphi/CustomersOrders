@@ -1,4 +1,5 @@
-﻿using CustomersOrders.Models.DTO;
+﻿using CustomersOrders.Models;
+using CustomersOrders.Models.DTO;
 using MediatR;
 
 namespace CustomersOrders.Handlers.Orders.Commands
@@ -6,6 +7,6 @@ namespace CustomersOrders.Handlers.Orders.Commands
     public class CreateOrderCommand : IRequest<int>
     {
         public int CustomerId { get; set; }
-        public OrderDTO Order { get; set; }
+        public OrderAdd Order { get; set; }
     }
 }

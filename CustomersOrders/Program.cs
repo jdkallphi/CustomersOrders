@@ -4,7 +4,6 @@ using CustomersOrders.Handlers.Customers;
 using CustomersOrders.Models;
 using CustomersOrders.Models.DTO;
 using CustomersOrders.Repositories;
-using CustomersOrders.Services;
 using MediatR.Pipeline;
 using Microsoft.EntityFrameworkCore;
 using System.Net.Mail;
@@ -25,6 +24,7 @@ namespace CustomersOrders
                 mc.CreateMap<Order, OrderDTO>().ReverseMap();
 
                 mc.CreateMap<CustomerAdd, Customer>();
+                mc.CreateMap<OrderAdd, Order>();
 
                 mc.AddProfile(new AutoMapperProfile());
             });
@@ -32,7 +32,6 @@ namespace CustomersOrders
             builder.Services.AddSingleton(mapper);
             builder.Services.AddAutoMapper(typeof(Program));
             builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(Program).Assembly));
-            builder.Services.AddTransient(typeof(IRequestExceptionHandler<,,>), typeof(ExceptionLoggingHandler<,,>));
             builder.Services.AddDbContext<AppDbContext>(options => options.UseLazyLoadingProxies().UseSqlServer("Server=.;Database=CustomersOrders;Trusted_Connection=True;TrustServerCertificate=True;"));
             
             builder.Services.AddScoped<IOrderRepository, OrderRepository>();
