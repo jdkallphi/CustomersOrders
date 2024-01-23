@@ -1,14 +1,15 @@
 using System.ComponentModel.DataAnnotations;
-
-namespace CustomersOrders.Classes
+using CustomersOrders.Models.Orders;
+namespace CustomersOrders.Models.Customers
 {
     public class Customer
     {
         private ICollection<Order> _orders;
-        public Customer() {
+        public Customer()
+        {
             _orders = new List<Order>();
         }
-        
+
         [Key]
         public int Id { get; set; }
         public required string FirstName { get; set; }

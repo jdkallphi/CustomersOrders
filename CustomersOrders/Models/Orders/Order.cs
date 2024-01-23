@@ -1,8 +1,8 @@
-using CustomersOrders.Classes;
+using CustomersOrders.Models.Customers;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace CustomersOrders
+namespace CustomersOrders.Models.Orders
 {
     public class Order
     {

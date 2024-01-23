@@ -1,4 +1,5 @@
 using CustomersOrders.Classes;
+using CustomersOrders.Models.Orders;
 using FluentValidation;
 
 namespace CustomersOrders

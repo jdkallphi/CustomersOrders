@@ -2,7 +2,6 @@ using AutoMapper;
 using CustomersOrders.Classes;
 using CustomersOrders.Handlers.Customers;
 using CustomersOrders.Models;
-using CustomersOrders.Models.DTO;
 using CustomersOrders.Repositories;
 using MediatR.Pipeline;
 using Microsoft.EntityFrameworkCore;
@@ -16,18 +15,11 @@ namespace CustomersOrders
         {
             var builder = WebApplication.CreateBuilder(args);
            
-            // Add services to the container.
-            // Auto Mapper Configurations
             var mapperConfig = new MapperConfiguration(mc =>
             {
-                mc.CreateMap<Customer, CustomerDTO>().ReverseMap();
-                mc.CreateMap<Order, OrderDTO>().ReverseMap();
-
-                mc.CreateMap<CustomerAdd, Customer>();
-                mc.CreateMap<OrderAdd, Order>();
-
                 mc.AddProfile(new AutoMapperProfile());
             });
+            mapperConfig.AssertConfigurationIsValid();
             IMapper mapper = mapperConfig.CreateMapper();
             builder.Services.AddSingleton(mapper);
             builder.Services.AddAutoMapper(typeof(Program));
@@ -37,11 +29,11 @@ namespace CustomersOrders
             builder.Services.AddScoped<IOrderRepository, OrderRepository>();
             builder.Services.AddScoped<ICustomerRepository, CustomerRepository>();
             
-            builder.Services.AddScoped<CreateCustomerHandler>();
-            builder.Services.AddScoped<GetAllCustomersHandler>();
-            builder.Services.AddScoped<GetCustomerHandler>();
-            builder.Services.AddScoped<SearchCustomersHandler>();
-            builder.Services.AddScoped<UpdateCustomerHandler>();
+            builder.Services.AddScoped<CreateCustomerCommandHandler>();
+            builder.Services.AddScoped<GetAllCustomersQueryHandler>();
+            builder.Services.AddScoped<GetCustomerQueryHandler>();
+            builder.Services.AddScoped<SearchCustomersQueryHandler>();
+            builder.Services.AddScoped<UpdateCustomerCommandHandler>();
             
             builder.Services.AddScoped<MailMessage>();
             

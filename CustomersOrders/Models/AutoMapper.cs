@@ -1,22 +1,18 @@
 ﻿using AutoMapper;
-using CustomersOrders.Classes;
-using CustomersOrders.Models.DTO;
+using CustomersOrders.Models.Customers;
+using CustomersOrders.Models.Orders;
 
 namespace CustomersOrders.Models
 {
     public class AutoMapperProfile: Profile
     {
-        public static Mapper InitializeAutomapper()
+        public AutoMapperProfile()
         {
-            //Provide all the Mapping Configuration
-            var config = new MapperConfiguration(cfg =>
-            {
-                cfg.CreateMap<Customer, CustomerDTO>();
-                cfg.CreateMap<Order, OrderDTO>();
-            });
-            //Create an Instance of Mapper and return that Instance
-            var mapper = new Mapper(config);
-            return mapper;
+            CreateMap<Customer, CustomerDTO>().ReverseMap();
+            CreateMap<Order, OrderDTO>().ReverseMap();
+            CreateMap<CustomerAdd, Customer>().ForMember(x=>x.Id, opt=>opt.Ignore()).ForMember(x => x.Orders, opt => opt.Ignore()).ForMember(x => x.NumberOfOrders, opt => opt.Ignore());
+            CreateMap<OrderAdd, Order>().ForMember(x => x.Id, opt => opt.Ignore()).ForMember(x => x.CreationDate, opt => opt.Ignore()).ForMember(x => x.IsCancelled, opt => opt.Ignore()).ForMember(x => x.CustomerId, opt => opt.Ignore()).ForMember(x => x.Customer, opt => opt.Ignore());
         }
+
     }
 }

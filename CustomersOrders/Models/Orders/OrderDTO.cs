@@ -1,7 +1,7 @@
 ﻿using CustomersOrders.Classes;
 using System.Runtime.Serialization;
 
-namespace CustomersOrders.Models.DTO
+namespace CustomersOrders.Models.Orders
 {
     [DataContract]
     public class OrderDTO
@@ -10,7 +10,7 @@ namespace CustomersOrders.Models.DTO
         public virtual int Id { get; set; }
         [DataMember]
         public virtual string Description { get; set; }
-     
+
         [DataMember]
         public virtual decimal Price { get; set; }
     }

@@ -1,4 +1,6 @@
 ﻿
+using CustomersOrders.Models.Orders;
+
 namespace CustomersOrders.Repositories
 {
     public interface IOrderRepository

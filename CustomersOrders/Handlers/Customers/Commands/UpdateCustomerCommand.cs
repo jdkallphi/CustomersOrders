@@ -1,5 +1,4 @@
-﻿using CustomersOrders.Classes;
-using CustomersOrders.Models.DTO;
+﻿using CustomersOrders.Models.Customers;
 using MediatR;
 
 namespace CustomersOrders.Handlers.Customers.Commands

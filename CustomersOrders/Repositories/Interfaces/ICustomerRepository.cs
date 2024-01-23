@@ -1,4 +1,4 @@
-﻿using CustomersOrders.Classes;
+﻿using CustomersOrders.Models.Customers;
 
 namespace CustomersOrders.Repositories
 {

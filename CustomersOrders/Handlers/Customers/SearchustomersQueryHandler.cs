@@ -1,17 +1,17 @@
 ﻿using AutoMapper;
 using CustomersOrders.Classes;
 using CustomersOrders.Handlers.Customers.Queries;
-using CustomersOrders.Models.DTO;
+using CustomersOrders.Models.Customers;
 using CustomersOrders.Repositories;
 using MediatR;
 
 namespace CustomersOrders.Handlers.Customers
 {
-    public class SearchCustomersHandler : IRequestHandler<SearchCustomersQuery, IEnumerable<CustomerDTO>>
+    public class SearchCustomersQueryHandler : IRequestHandler<SearchCustomersQuery, IEnumerable<CustomerDTO>>
     {
         private readonly ICustomerRepository _customerRepository;
         private readonly IMapper _mapper;
-        public SearchCustomersHandler(ICustomerRepository customerRepository, IMapper mapper)
+        public SearchCustomersQueryHandler(ICustomerRepository customerRepository, IMapper mapper)
         {
             _mapper = mapper;
             _customerRepository = customerRepository;

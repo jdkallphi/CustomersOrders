@@ -1,5 +1,5 @@
 ﻿using CustomersOrders.Classes;
-using CustomersOrders.Models.DTO;
+using CustomersOrders.Models.Orders;
 using MediatR;
 
 namespace CustomersOrders.Handlers.Orders.Queries

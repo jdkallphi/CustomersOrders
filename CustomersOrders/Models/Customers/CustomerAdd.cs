@@ -1,6 +1,6 @@
 ﻿using System.Runtime.Serialization;
 
-namespace CustomersOrders.Models
+namespace CustomersOrders.Models.Customers
 {
     public class CustomerAdd
     {

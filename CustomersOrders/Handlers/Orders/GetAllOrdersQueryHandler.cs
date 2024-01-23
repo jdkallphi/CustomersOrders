@@ -1,9 +1,9 @@
 ﻿using AutoMapper;
-using Azure.Core;
 using CustomersOrders.Handlers.Orders.Queries;
-using CustomersOrders.Models.DTO;
+using CustomersOrders.Models.Orders;
 using CustomersOrders.Repositories;
 using MediatR;
+using System.Data;
 
 namespace CustomersOrders.Handlers.Orders
 {

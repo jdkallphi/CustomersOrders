@@ -7,10 +7,10 @@ using Microsoft.EntityFrameworkCore;
 
 namespace CustomersOrders.Handlers.Customers
 {
-    public class DeleteCustomerHandler : IRequestHandler<DeleteCustomerCommand, int>
+    public class DeleteCustomerCommandHandler : IRequestHandler<DeleteCustomerCommand, int>
     {
         private readonly ICustomerRepository _customerRepository;
-        public DeleteCustomerHandler(ICustomerRepository customerRepository)
+        public DeleteCustomerCommandHandler(ICustomerRepository customerRepository)
         {
 
             _customerRepository = customerRepository;

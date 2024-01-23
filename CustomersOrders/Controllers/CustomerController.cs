@@ -1,9 +1,7 @@
-using CustomersOrders.Classes;
 using CustomersOrders.Handlers.Customers.Commands;
 using CustomersOrders.Handlers.Customers.Queries;
 using CustomersOrders.Handlers.Orders.Commands;
-using CustomersOrders.Handlers.Orders.Queries;
-using CustomersOrders.Models;
+using CustomersOrders.Models.Customers;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 

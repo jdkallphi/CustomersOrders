@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using CustomersOrders.Handlers.Orders.Queries;
-using CustomersOrders.Models.DTO;
+using CustomersOrders.Models.Orders;
 using CustomersOrders.Repositories;
 using MediatR;
 

@@ -1,3 +1,4 @@
+using CustomersOrders.Models.Customers;
 using FluentValidation;
 using System.Numerics;
 
@@ -19,7 +20,6 @@ namespace CustomersOrders.Classes
 
         private bool IsEmailUnique(Customer editedCustomer, string newEmail)
         {
-            // Check if the new email is unique among all customers excluding the current edited customer
             return !_customers.Any(customer => customer.Id != editedCustomer.Id && customer.Email == newEmail);
         }
     }

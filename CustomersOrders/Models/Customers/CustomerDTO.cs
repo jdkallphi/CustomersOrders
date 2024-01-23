@@ -1,6 +1,6 @@
 ﻿using System.Runtime.Serialization;
 
-namespace CustomersOrders.Models.DTO
+namespace CustomersOrders.Models.Customers
 {
     [DataContract]
     public class CustomerDTO
@@ -10,10 +10,10 @@ namespace CustomersOrders.Models.DTO
 
         [DataMember]
         public virtual string FirstName { get; set; }
-        
+
         [DataMember]
         public virtual string LastName { get; set; }
-        
+
         [DataMember]
         public virtual string Email { get; set; }
 

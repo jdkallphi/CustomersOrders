@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
-using CustomersOrders.Classes;
-using CustomersOrders.Handlers.Customers.Queries;
 using CustomersOrders.Handlers.Orders.Commands;
+using CustomersOrders.Models.Orders;
 using CustomersOrders.Repositories;
 using FluentValidation;
 using MediatR;
@@ -10,7 +9,7 @@ using System.Net.Mail;
 
 namespace CustomersOrders.Handlers.Orders
 {
-    public class CreateOrderHandler: IRequestHandler<CreateOrderCommand, int>
+    public class CreateOrderCommandHandler: IRequestHandler<CreateOrderCommand, int>
     {
         private readonly ICustomerRepository _customerRepository;
         private readonly IOrderRepository _orderRepository;
@@ -18,7 +17,7 @@ namespace CustomersOrders.Handlers.Orders
         private readonly MailMessage _mailMessage;
         private readonly IUnitOfWork _unitOfWork; 
         
-        public CreateOrderHandler(ICustomerRepository customerRepository, IOrderRepository orderRepository, IMapper mapper, IUnitOfWork unitOfWork, MailMessage mail)
+        public CreateOrderCommandHandler(ICustomerRepository customerRepository, IOrderRepository orderRepository, IMapper mapper, IUnitOfWork unitOfWork, MailMessage mail)
         {
             _mapper = mapper;
             _mailMessage = mail;

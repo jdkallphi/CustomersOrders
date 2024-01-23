@@ -1,4 +1,4 @@
-﻿using CustomersOrders.Classes;
+﻿using CustomersOrders.Models.Customers;
 using Microsoft.EntityFrameworkCore;
 
 namespace CustomersOrders.Repositories

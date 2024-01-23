@@ -1,20 +1,20 @@
 ﻿using AutoMapper;
 using CustomersOrders.Classes;
 using CustomersOrders.Handlers.Customers.Commands;
-using CustomersOrders.Models.DTO;
+using CustomersOrders.Models.Customers;
 using CustomersOrders.Repositories;
 using FluentValidation;
 using MediatR;
 
 namespace CustomersOrders.Handlers.Customers
 {
-    public class CreateCustomerHandler : IRequestHandler<CreateCustomerCommand, CustomerDTO>
+    public class CreateCustomerCommandHandler : IRequestHandler<CreateCustomerCommand, CustomerDTO>
     {
         private readonly ICustomerRepository _customerRepository;
         private readonly IMapper _mapper;
         private readonly IUnitOfWork _unitOfWork;
 
-        public CreateCustomerHandler(ICustomerRepository customerRepository,IMapper mapper, IUnitOfWork unitOfWork)
+        public CreateCustomerCommandHandler(ICustomerRepository customerRepository,IMapper mapper, IUnitOfWork unitOfWork)
         {
             _mapper = mapper;
             _customerRepository = customerRepository;

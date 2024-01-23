@@ -3,15 +3,15 @@ using CustomersOrders.Handlers.Customers.Queries;
 using CustomersOrders.Repositories;
 using MediatR;
 using AutoMapper;
-using CustomersOrders.Models.DTO;
+using CustomersOrders.Models.Customers;
 
 namespace CustomersOrders.Handlers.Customers
 {
-    public class GetAllCustomersHandler : IRequestHandler<GetAllCustomersQuery, IEnumerable<CustomerDTO>>
+    public class GetAllCustomersQueryHandler : IRequestHandler<GetAllCustomersQuery, IEnumerable<CustomerDTO>>
     {
         private readonly ICustomerRepository _customerRepository;
         private readonly IMapper _mapper;
-        public GetAllCustomersHandler(ICustomerRepository customerRepository, IMapper mapper)
+        public GetAllCustomersQueryHandler(ICustomerRepository customerRepository, IMapper mapper)
         {
             _mapper = mapper;
             _customerRepository = customerRepository;
@@ -19,7 +19,8 @@ namespace CustomersOrders.Handlers.Customers
         
         public Task<IEnumerable<CustomerDTO>> Handle(GetAllCustomersQuery request, CancellationToken cancellationToken)
         {
-            var customers = _mapper.Map<IEnumerable<CustomerDTO>>(_customerRepository.GetAllCustomers());
+            var repoCustomers = _customerRepository.GetAllCustomers();
+            var customers = _mapper.Map<IEnumerable<CustomerDTO>>(repoCustomers);
             return Task.FromResult(customers);
         }
     }
